@@ -1,0 +1,146 @@
+/* General body styles for the page background */
+body {
+  background-color: #f4f7f9; /* A softer, lighter background */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.profile-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align to the top */
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.profile-card {
+  background: #ffffff;
+  border-radius: 20px; /* Softer, more modern corners */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 500px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+}
+
+.profile-header {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); /* Brighter, more inviting gradient */
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.profile-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 6px solid white; /* Thicker, more prominent border */
+  margin-bottom: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+  background-color: #f0f2f5; /* Background for broken images */
+}
+
+.profile-fullname {
+  margin: 0;
+  font-size: 2.25rem; /* Larger for more impact */
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.profile-username {
+  margin: 5px 0 0;
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.profile-body {
+  padding: 35px;
+}
+
+.profile-bio {
+  text-align: center;
+  color: #555;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #eef2f5;
+}
+
+.profile-bio p {
+    margin: 0;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Increased spacing */
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #eef2f5;
+  transition: background-color 0.2s ease;
+}
+
+.detail-item:hover {
+    background-color: #f1f5f9;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #334155;
+  margin-left: 15px; /* Space between icon and label */
+}
+
+.detail-value {
+  color: #007bff; /* Accent color for the value */
+  font-weight: 500;
+  margin-left: auto; /* Pushes the value to the right */
+}
+
+/* Add an icon before each label for better UI */
+.detail-item::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+}
+
+/* Specific icons for each detail */
+.detail-item:nth-child(1)::before {
+  background-image: url('https://api.iconify.design/solar:letter-linear.svg'); /* Email Icon */
+}
+.detail-item:nth-child(2)::before {
+  background-image: url('https://api.iconify.design/solar:health-bold-duotone.svg'); /* Blood Drop Icon */
+}
+.detail-item:nth-child(3)::before {
+  background-image: url('https://api.iconify.design/solar:calendar-date-linear.svg'); /* Joined Date Icon */
+}
+
+
+/* For loading and error states */
+.loading-container,
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+  color: #606770;
+  text-align: center;
+}
