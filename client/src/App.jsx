@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import AppRoutes from "./routes";
 
@@ -10,15 +10,11 @@ import Sidebar from "./components/Sidebar";
 import "./styles/global.css";
 
 const App = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
-
   return (
     <Router>
       <div className="app-container">
-        <Navbar toggleSidebar={toggleSidebar} />
-        <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+        <Navbar />
+        <Sidebar />
         <main className="main-content">
           <AppRoutes />
         </main>
