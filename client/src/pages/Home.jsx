@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../styles/home.css';
 import ServiceCard from '../components/ServiceCard';
 import Chatbot from '../components/Chatbot';
+import { MdSmartToy } from "react-icons/md";
 
 const Home = () => {
   const [openChat, setOpenChat] = useState(false);
@@ -34,11 +35,11 @@ const Home = () => {
       </section>
 
       {/* Floating Chat Button */}
-      {!openChat && (
-        <button className="chat-button" onClick={() => setOpenChat(true)}>
-          💬
-        </button>
-      )}
+{!openChat && (
+  <button className="chatbot-btn" onClick={() => setOpenChat(true)}>
+  <MdSmartToy size={30} color="#ffffff" />
+</button>
+)}
 
       {/* Chatbot Component */}
       {openChat && (
