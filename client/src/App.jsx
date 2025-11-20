@@ -18,7 +18,7 @@ const App = () => {
         <main className="main-content">
           <AppRoutes />
         </main>
-        <Chatbot />
+        
         <Footer />
       </div>
     </Router>

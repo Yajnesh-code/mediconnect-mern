@@ -2,6 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
+const dotenv = require("dotenv");
+dotenv.config();
+
+// chatbot route (CommonJS)
+const chatbotRoutes = require("./routes/chatbot");
 
 const app = express();
 const PORT = 5000;
@@ -18,21 +23,22 @@ mongoose.connect('mongodb://127.0.0.1:27017/mediconnect', {
 .then(() => console.log('✅ MongoDB connected'))
 .catch(err => console.error('❌ MongoDB connection error:', err));
 
-// --- ADDED: Serve static files from the 'uploads' directory ---
-// This makes uploaded images accessible via URLs like 'http://localhost:5000/uploads/filename.jpg'
+// Serve uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Static images from public folder (if needed for other assets)
+// Static images
 app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
 // Routes
-app.use('/api/auth', require('./routes/authRoutes'));  // User login/signup
-app.use('/api/doctors', require('./routes/doctorRoutes')); // Doctor CRUD + approval
-app.use('/api/appointments', require('./routes/appointmentRoutes')); // Appointment booking
-app.use('/api/donors', require('./routes/donorRoutes')); // Blood donor
-app.use('/api/medicines', require('./routes/medicineRoutes')); // Pharmacy medicines
-app.use('/api/hospitals', require('./routes/hospitalRoutes')); // Hospitals
-app.use('/api/pharmacies', require('./routes/pharmacyRoutes')); // Pharmacies
+app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/doctors', require('./routes/doctorRoutes'));
+app.use('/api/appointments', require('./routes/appointmentRoutes'));
+app.use('/api/donors', require('./routes/donorRoutes'));
+app.use('/api/medicines', require('./routes/medicineRoutes'));
+app.use('/api/hospitals', require('./routes/hospitalRoutes'));
+app.use('/api/pharmacies', require('./routes/pharmacyRoutes'));
+
+app.use("/api", chatbotRoutes);
 
 // Root route
 app.get('/', (req, res) => {

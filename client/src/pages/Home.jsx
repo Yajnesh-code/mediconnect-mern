@@ -1,16 +1,18 @@
-// src/pages/Home.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/home.css';
 import ServiceCard from '../components/ServiceCard';
+import Chatbot from '../components/Chatbot';
 
 const Home = () => {
+  const [openChat, setOpenChat] = useState(false);
+
   return (
     <div className="home-container">
+
       {/* Hero Section with Full Background Video */}
       <header className="hero-section">
         <video autoPlay loop muted playsInline className="background-video">
           <source src="/videos/medic-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
         </video>
 
         <div className="hero-overlay">
@@ -30,6 +32,18 @@ const Home = () => {
           <ServiceCard title="Health Chatbot" description="Get medical advice using our smart chatbot." />
         </div>
       </section>
+
+      {/* Floating Chat Button */}
+      {!openChat && (
+        <button className="chat-button" onClick={() => setOpenChat(true)}>
+          💬
+        </button>
+      )}
+
+      {/* Chatbot Component */}
+      {openChat && (
+        <Chatbot onClose={() => setOpenChat(false)} />
+      )}
     </div>
   );
 };
