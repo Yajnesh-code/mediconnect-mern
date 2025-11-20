@@ -17,3 +17,6 @@ server/dist/
 .env
 
 server/.env
+
+server/.env
+*.env
