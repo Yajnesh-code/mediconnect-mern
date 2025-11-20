@@ -7,7 +7,7 @@ export default function AppointmentList() {
   const [editFormData, setEditFormData] = useState({ date: "", time: "" });
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/appointments")
+    fetch(`${import.meta.env.VITE_API_URL}/api/appointments`)
       .then((res) => res.json())
       .then((data) => setAppointments(data))
       .catch((err) => console.error("Error fetching appointments:", err));
@@ -19,7 +19,7 @@ export default function AppointmentList() {
     }
 
     try {
-      const res = await fetch(`http://localhost:5000/api/appointments/${appointmentId}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/appointments/${appointmentId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: 'Cancelled' }),
@@ -55,7 +55,7 @@ export default function AppointmentList() {
     if (!editingAppointment) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/appointments/${editingAppointment._id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/appointments/${editingAppointment._id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(editFormData),

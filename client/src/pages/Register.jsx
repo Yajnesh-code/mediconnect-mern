@@ -50,7 +50,7 @@ const Register = () => {
     try {
       // When sending FormData, you DO NOT set the 'Content-Type' header.
       // The browser automatically sets it to 'multipart/form-data' with the correct boundary.
-      const res = await fetch('http://localhost:5000/api/auth/register', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/register`, {
         method: 'POST',
         body: formData,
       });

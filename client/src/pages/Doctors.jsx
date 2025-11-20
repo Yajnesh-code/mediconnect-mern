@@ -6,7 +6,7 @@ const DoctorList = () => {
   const [doctors, setDoctors] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/doctors") // adjust route
+    axios.get(`${import.meta.env.VITE_API_URL}/api/doctors`) // adjust route
       .then(res => setDoctors(res.data))
       .catch(err => console.error(err));
   }, []);

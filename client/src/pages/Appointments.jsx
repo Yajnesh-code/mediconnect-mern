@@ -18,7 +18,7 @@ export default function Appointments() {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/doctors");
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/doctors`);
         const data = await res.json();
         setDoctors(data);
       } catch (err) {
@@ -42,7 +42,7 @@ export default function Appointments() {
     e.preventDefault();
     setError(""); // Clear previous errors before submitting
     try {
-      const res = await fetch("http://localhost:5000/api/appointments", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/appointments`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),

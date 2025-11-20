@@ -11,7 +11,7 @@ const DoctorDashboard = () => {
   useEffect(() => {
     // Fetch the doctor's current data, including availability
     const fetchDoctor = async () => {
-      const response = await fetch(`http://localhost:5000/api/doctors/${doctorId}`); // Note: you may need to create this route
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/doctors/${doctorId}`); // Note: you may need to create this route
       const data = await response.json();
       setDoctor(data);
       setAvailability(data.availability);
@@ -27,7 +27,7 @@ const DoctorDashboard = () => {
   };
 
   const handleSave = async () => {
-    const response = await fetch(`http://localhost:5000/api/doctors/${doctorId}/availability`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/doctors/${doctorId}/availability`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ availability }),

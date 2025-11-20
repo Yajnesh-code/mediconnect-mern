@@ -10,7 +10,7 @@ const PharmacySearch = () => {
   useEffect(() => {
     const fetchPharmacies = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/pharmacies');
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/pharmacies`);
         const data = await response.json();
         setPharmacies(data);
         setLoading(false);

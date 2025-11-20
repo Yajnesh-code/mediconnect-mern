@@ -33,7 +33,7 @@ const DonorSearch = () => {
     const fetchDonors = async () => {
       setLoading(true);
       try {
-        let url = 'http://localhost:5000/api/donors';
+        let url = `${import.meta.env.VITE_API_URL}/api/donors`;
         if (needBloodGroup) url += `?bloodGroup=${encodeURIComponent(needBloodGroup)}`;
 
         const res = await fetch(url);
@@ -71,7 +71,7 @@ const DonorSearch = () => {
     }
 
     try {
-      const res = await fetch('http://localhost:5000/api/donors/add', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/donors/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

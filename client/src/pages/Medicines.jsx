@@ -7,7 +7,7 @@ const MedicinePage = () => {
   const { addToCart } = useCart();
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/medicines')
+    fetch(`${import.meta.env.VITE_API_URL}/api/medicines`)
       .then((res) => res.json())
       .then((data) => setMedicines(data))
       .catch((err) => console.error('Failed to load medicines:', err));
